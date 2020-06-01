@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  p{
+    margin-left: 213px;
+    margin-top: 0;
+    margin-bottom: 19px;
+  }
+  .a{
+    color: red;
+    background-color: bisque;
+    padding: 4px 7px;
+    margin-left: 16px;
+    border: 2px outset #ccc;
+  }
+  .a:hover{
+    color: red;
+  }
+  textarea {
+    margin: 2px;
+    font-family: sans-serif;
+    line-height: inherit;
+    width: 428px;
+    height: 153px;
+    border-radius: 2%;
+    margin-left: 283px;
+    background-color: aliceblue;
+    padding: 8px 14px;
+  }
+  input[type=text]{
+    font-family: sans-serif;
+    background-color: aliceblue;
+    margin-left: 282px;
+    overflow: visible;
+    width: 296px;
+    padding: 9px;
+  }
+  input[type=submit]{
+    font-size: larger;
+    background-color: bisque;
+    margin-left: 282px;
+    width: 68px;
+    margin-top: 24px;
+  }
+  .form{
+    position: fixed;
+    margin-left: 6px;
+    margin-top: -1px;
+  }
+  div.div1 {
+    height: 66px;
+    top: 0;
+    padding: 20px 6px;
+}
+  }
+  div.div2 {
+    top: 300px;
+    bottom: 0;
+  }
+</style>
+<script>
+  setTimeout('$("#msg_s").hide()',5000);
+</script>
+      <div class="container" >
+            <div class="div1">
+                   
+              {% if messages %}
+              {% for message in messages %}
+              <div class="alert alert-{{message.tags}}"  style="width: 9cm;margin-left:223px;" id="msg_s"> {{message}} </div>
+              {% endfor %}
+              {% endif %}
+            </div>
+            <div class="div2">
+            <form method="POST">
+                {% csrf_token %}
+                <p>
+                     <p>* Object :</p>
+                    <input type="text" name="object" placeholder="medicament x" required>
+                </p>
+                <p>
+                    <p> * Write any thing :</p>
+                    <textarea name="content"  placeholder="Hello , i need the above medicament ..." required></textarea>
+                </p>
+                <p>
+                     <p>* Your current address :</p>
+                    <input type="text" name="c_place" placeholder="tunis" required>
+                </p>
+        
+                <input type="submit" value="Post">
+                <a class="a" href="{% url 'user:profile' %}"> <b>Cancel</b> </a>
+            </form>
+            </div>
+            
+        </div>
+
+
+    
+
+{% endblock content %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="hero-container" data-aos="fade-in">
+      <h1>Note  </h1><br>
+      <p><span class="typed" data-typed-items="Please {{user}}, if you got donations ,or if you already helped others , don't forget to delete the corresponding posts , Thank you :)  "></span></p>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+    <section id="resume" class="resume">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6" data-aos="fade-up">
+            <h3 class="resume-title"> Requests </h3>
+            {% for post in requests %}
+            <div class="resume-item pb-0">
+              <img class="small-photo" src="{{ post.author.profile.image.url }}" alt="profile-photo">
+              <h4 class="profile-name"> {{post.author.username}} <span class="date" style="margin-left: 120px;"> {{ post.post_date}} |  {{post.current_place|title}}</span> </h4> 
+        
+              
+              <p class="p">
+              
+                Object :{{ post.title }} <br>
+                <em> {{ post.content }} </em>
+               <a href="{% url 'user:detail' post.slug_title post.id %}"> <h5> More details </h5></a>
+                
+              <p>
+            </div>
+            {% empty %}
+            you have 0 posts
+            {% endfor %}
+            
+          </div>
+
+          <!----- Donations -------->
+          <div class="col-lg-6" data-aos="fade-up">
+            <h3 class="resume-title"> Donations </h3>
+            {% for post in donations %}
+            <div class="resume-item pb-0">
+              <img class="small-photo" src="{{ post.author.profile.image.url }}" alt="profile-photo">
+              <h4 class="profile-name"> {{post.author.username}} <span class="date" style="margin-left: 120px;"> {{ post.post_date}} |  {{post.current_place|title}}</span> </h4> 
+        
+              
+              <p class="p">
+                Object :{{ post.title }} <br>
+                <em> {{ post.content }} </em>
+              <a href="{% url 'user:detail' post.slug_title post.id %}"> <h5> More details </h5></a>
+                
+              <p>
+            </div>
+            {% empty %}
+            you have 0 donations
+            {% endfor %}
+            
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Resume Section -->
+
+
+  </main><!-- End #main -->
+
+{% endblock %}

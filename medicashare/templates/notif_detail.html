@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<main id="main">
+    <section id="resume" class="resume">
+      <div class="container">
+       <!--! ## -->
+       <div class="section-title" style="margin-left:1cm;margin-bottom:1cm;padding:1cm 1cm ;width:20.5cm;border: 3px outset orange;">
+        <div class="col-lg-12" data-aos="fade-up" style="width: 6cm;"></div>
+        <p>  
+            <b>from :{{ notif.sender|title }}</b> <small><span style="margin-left: 444px;position:absolute;"> 
+            | {{notif.notification_date|timesince}} ago </span></small> 
+        </p>
+        {%if notif.post.post_type == 'R' %}
+          <p>
+            Hi ,I can help you , please if you are still interested <br>
+            my email : email@exemple.com <br>
+            {% if notif.sender.profile.phone_number %}
+            or call me : {{notif.sender.profile.phone_number}} <br>
+            {% endif %}
+          </p>
+        {%elif notif.post.post_type == 'D' %}
+        <p>
+          Hi ,I need your help please if you can contact me as soon as possible  <br>
+          my email : email@exemple.com <br>
+          {% if notif.sender.profile.phone_number %}
+          or call me : {{notif.sender.profile.phone_number}} <br>
+          {% endif %}
+      </p>
+        {%endif%}
+      
+          
+          <p>
+            <br>
+            <b>about your post</b> : <br> 
+            <b>medicament :</b> "{{ notif.post.title }} "<br>
+            <b> Content :</b><em> " {{ notif.post.content }} "
+            </em>
+          <p>    
+          
+        </div>
+    </div>
+    </section>
+
+
+  </main>
+
+{% endblock %}

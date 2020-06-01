@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="hero-container" data-aos="fade-in">
+      <h1>Bonjour {{user}} </h1><br>
+      <p><span class="typed" data-typed-items="Are you looking for something ?, Others need help ! ,Don't wait scroll down,have ... donate now , don't wait ..."></span></p>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+    <section id="resume" class="resume">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6" data-aos="fade-up">
+            <h3 class="resume-title"> medkits {{ postType}} </h3>
+             
+
+            {% for post in posts %}
+            <div class="resume-item pb-0">
+              <img class="small-photo" src="{{ post.author.profile.image.url }}" alt="profile-photo">
+              <h4 class="profile-name"> {{post.author.username}} </h4>
+              
+              <p class="p">
+                {{ post.post_date}} | {{post.current_place|title}} <br>
+                Object :{{ post.title }} <br>
+                <em> {{ post.content }} </em>
+               <a href="{% url 'user:detail' post.slug_title post.id %}"> <h5> More details </h5></a>
+                
+              <p>
+            </div>
+            {% empty %}
+            <p>
+                No results found , try to enter a valid medkit name 
+            </p>
+            {% endfor %}
+            
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Resume Section -->
+
+
+  </main><!-- End #main -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+
+
+{% endblock %}
+    

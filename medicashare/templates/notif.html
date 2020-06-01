@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<main id="main">
+    <section id="resume" class="resume">
+      <div class="container">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}}"> {{message}} </div>
+        {% endfor %}
+        {% endif %}
+       <!--! ## -->
+       {% for not in notifications %}
+       <a href="{% url 'user:notif_detail' not.id %}">
+       <div class="section-title" style="margin-left:1cm;margin-bottom:1cm;padding:8px 14px ;width:20cm;border: 1px solid orange;">
+        <div class="col-lg-12" data-aos="fade-up" style="width: 6cm;"></div>
+          
+            <p>  <b><span style="color: black;"> from </span> :{{ not.sender|title }}</b> <small><span style="color:black;margin-left: 444px;position:absolute;"> 
+              | {{not.notification_date|timesince}} ago </span></small> 
+             </p>
+        
+            
+            <p>
+              about your post :<em> {{ not.post.content|truncatechars:25 }} </em> <br>
+              
+            <p>
+          
+        </div>
+        {% empty %}
+       <p>  no notifications yet </p>
+       </a>
+        {% endfor %}
+    </div>
+    </section><!-- End Resume Section -->
+
+
+  </main><!-- End #main -->
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<main id="main">
+    <section id="resume" class="resume">
+      <div class="container">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}}"> {{message}} </div>
+        {% endfor %}
+        {% endif %}
+       <!--! ## -->
+       <div class="section-title" style="margin-left:1cm;margin-bottom:1cm;padding:1cm 1cm ;width:19cm;border: 1px solid orange;">
+        <div class="col-lg-12" data-aos="fade-up" style="width: 6cm;"></div>
+          
+        <img class="small-photo" src="{{ post.author.profile.image.url }}" alt="profile-photo">
+        <h4 class="profile-name"> {{post.author.username}} <span class="date"> {{ post.post_date}} |  {{post.current_place|title}}</span> </h4> 
+            <p class="p">
+              
+              Object :{{ post.title }} <br>
+              <em> {{ post.content }} </em> <br>
+              {% if post.author == user %}
+               <a href="{% url 'user:delete_post' post.id %}"> <h5> delete </h5></a>
+               <a href="{% url 'user:update_post' post.id %}"> <h5> update </h5></a>
+             {% else %}
+             <form method="POST">
+              {% csrf_token %}
+                {% if post.post_type == 'R' %}
+                  <input  class="input" type="submit" value="Help {{post.author}} "> <br>
+                  <small> By clicking <b>HELP</b> you accept to send your email and phone number to <b>{{post.author}}</b></small>
+                
+                {% elif post.post_type == 'D' %}
+                  <input  class="input" type="submit" value="Ask {{post.author}} "> <br>
+                  <small> By clicking <b>ASK</b> you accept to send your email and phone number to <b>{{post.author}}</b></small>
+              
+                {% endif %}
+                </form>
+             {% endif %}
+            <p>
+          
+        </div>
+    </div>
+    </section>
+
+
+  </main>
+
+{% endblock %}

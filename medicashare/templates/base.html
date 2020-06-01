@@ -1,0 +1,243 @@
+{% load static %} 
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+ 
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>{{title|title}}</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'mainSt/assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'mainSt/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <link href="{% static 'mainSt/assets/vendor/bootstrap/css/bootstrap.min2.css' %}" rel="stylesheet">
+  <link href="{% static 'mainSt/assets/vendor/icofont/icofont.min2.css' %}" rel="stylesheet">
+  <link href="{% static 'mainSt/assets/vendor/boxicons/css/boxicons.min2.css' %}" rel="stylesheet">
+  <link href="{% static 'mainSt/assets/vendor/venobox/venobox2.css' %}" rel="stylesheet">
+  <link href="{% static 'mainSt/assets/vendor/owl.carousel/assets/owl.carousel.min2.css' %}" rel="stylesheet">
+  <link href="{% static 'mainSt/assets/vendor/aos/aos2.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'mainSt/assets/css/style22.css' %}" rel="stylesheet">
+  <style> 
+    .btn-update{
+      background-color: beige;
+    width: 118px;
+    font-size: 25px;
+    }
+    .btn-upload{
+      background-color: #9be89b;
+    padding: 4px 11px;
+    margin: 23px 2px;
+    }
+    .btn-upload:hover{
+      cursor: pointer;
+    }
+    .rc-StatusMessage.success {
+      background: url(https://d3njjcbhbojbot.cloudfront.net/web/images/account-settings/success_circle.svg) no-repeat;
+      color: #1f8354;
+  }
+  .rc-StatusMessage.error {
+    background: url(https://d3njjcbhbojbot.cloudfront.net/web/images/account-settings/error_circle.svg) no-repeat;
+    color: #d30001;
+  }
+  
+  .rc-StatusMessage {
+      display: inline-block;
+      margin-left: 20px;
+      margin-top: 40px;
+      padding-left: 25px;
+      min-height: 22px;
+      line-height: 20px;
+      font-size: 21px;
+      font-weight: 500;
+  }
+    .my-posts{
+      width: 170px;
+    border-bottom: 2px solid rgb(26, 223, 230);
+    margin: -9px 12px;
+  }
+  
+    .date{
+      margin-left: 240px;
+      font-size: small;
+    }
+    small {
+      margin-left: 13px;
+      font-size: 80%;
+      font-weight: 400;
+  }
+  .input {
+    background-color: gainsboro;
+    margin: 61px 0px 7px 5px;
+    overflow: visible;
+    border: 3px outset lightslategray;
+}
+.input:hover{
+  background-color:cornflowerblue;
+}
+    .p{
+      margin-top: 29px;
+      margin-bottom: 2rem;
+      margin-left: 6px;
+    }
+    .profile-name{
+      margin-left: 69px;
+      font-size: 1.5rem;
+      margin-top: -43px;
+    }
+    .small-photo{
+        width: 60px;
+        height: 60px;
+        border-radius: 68%;
+        border-style: groove;
+    }
+    #header .profile img {
+      margin: 15px auto;
+      display: block;
+      width: 120px;
+      height: 117px;
+      border: 8px solid #2c2f3f;
+  }
+    .alert-success {
+      color: #155724;
+      background-color: #d4edda;
+      border-color: #c3e6cb;
+  }
+  .alert-warning {
+      color: #856404;
+      background-color: #FFF7A8;
+      border-color: #ffeeba;
+  }
+  .alert {
+      position: relative;
+      padding: .75rem 1.25rem;
+      margin-bottom: 1rem;
+      border: 1px solid transparent;
+      border-radius: .25rem;
+  }
+  .badge {
+    position: absolute;
+    top: 15px;
+    right: 97px;
+    padding: 4px 9px;
+    border-radius: 33%;
+    background-color: #1a8eda99;
+    color: white;
+}
+  
+  </style>
+
+  
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+        <img src="{{ user.profile.image.url }}" alt="profile-image" class="rounded-circle">
+        <h1 class="text-light"><a href="{% url 'user:my_profile' user.username %}"> {{ user.first_name|title }}<span style="margin-left: 8px;">{{ user.last_name|title  }}</span> </a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <ul>
+          <li class="active"><a href="{% url 'user:profile' %}"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          
+            {% if nb_nots > 0 %}
+              <li><a href="{% url 'user:notification' %}"><i class="bx bx-notification"></i> <span>Notifications</span> <div id="nots"> <span class="badge">{{nb_nots}}</span></div> </a> </li>
+            
+              {% else %} <!-- no notification -->
+            <li><a href="{% url 'user:notification' %}"><i class="bx bx-notification-off"></i><span>Notifications</span> </a></li>
+            {% endif %}
+          <li><a href="{% url 'user:newRequest' %}"><i class="bx bx-plus"></i> <span>Request </span></a></li>
+
+          <li><a href="{% url 'user:newDonation' %}"><i class="bx bx-donate-heart">  </i> Donate </a></li>
+          <li><a href="{% url 'user:my_profile' user.username %}"><i class="bx bx-user"></i> Profile</a></li>
+          <li><a href="{% url 'user:logout' %}"><i class="bx bx-log-out"></i> Logout </a></li>
+
+        </ul>
+      </nav><!-- .nav-menu -->
+      <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+    </div>
+  </header><!-- End Header -->
+    {% block content %}
+
+    {% endblock%}
+
+
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>2020</span></strong>
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
+        Designed by <a href="#">Team</a>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script>
+    setInterval(function() {
+      $( document ).ready(function() {
+        $.ajax({
+          url: "{% url 'user:nots' %}",
+          //data :nb_nots,
+          success: function(data) {
+          //$('#nots').html(data);
+          $('#nots').html('<span class="badge">'+ data.nb_nots +'</span>');
+          }
+        });
+    });
+      
+    }, 2000);
+  
+  
+  </script>
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  <script src="{% static 'mainSt/assets/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'mainSt/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'mainSt/assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'mainSt/assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'mainSt/assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'mainSt/assets/vendor/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'mainSt/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'mainSt/assets/vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'mainSt/assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'mainSt/assets/vendor/typed.js/typed.min.js' %}"></script>
+  <script src="{% static 'mainSt/assets/vendor/aos/aos.js' %}"></script>
+
+<!--  -->
+
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'mainSt/assets/js/main.js' %}"></script>
+</body>
+
+</html>
