@@ -147,7 +147,7 @@
     <div class="d-flex flex-column">
 
       <div class="profile">
-        <img src="{{ user.profile.image.url }}" alt="profile-image" class="rounded-circle">
+        <img src="{{ user.profile.image.url }}"  alt="profile-image" class="rounded-circle"> <!--profile-image-->
         <h1 class="text-light"><a href="{% url 'user:my_profile' user.username %}"> {{ user.first_name|title }}<span style="margin-left: 8px;">{{ user.last_name|title  }}</span> </a></h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -165,7 +165,8 @@
             {% if nb_nots > 0 %}
               <li><a href="{% url 'user:notification' %}"><i class="bx bx-notification"></i> <span>Notifications</span> <div id="nots"> <span class="badge">{{nb_nots}}</span></div> </a> </li>
             
-              {% else %} <!-- no notification -->
+              {% else %} 
+              <!-- no notification -->
             <li><a href="{% url 'user:notification' %}"><i class="bx bx-notification-off"></i><span>Notifications</span> </a></li>
             {% endif %}
           <li><a href="{% url 'user:newRequest' %}"><i class="bx bx-plus"></i> <span>Request </span></a></li>

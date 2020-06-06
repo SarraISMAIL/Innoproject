@@ -1,0 +1,146 @@
+html {
+  font-size: 16px;
+  /* If you set different base font, you might need more tweak */
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  background-color: rgb(242, 245, 247);
+  color: #4D5068;
+  font-family: 'Open Sans', sans-serif;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.content-body {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+background-image: url("sarra.jpg");
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  position: relative;
+  background-size: 1100px;
+}
+
+@media screen and (max-width: 640px) {
+  .content-body {
+    background-position-y: top;
+    background-size: 250px;
+    margin-bottom: 5em;
+    /* tweak for footer fixed -- you don't need this */
+  }
+}
+
+.form-wrapper {
+  width: 350px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 640px) {
+  .form-wrapper {
+    margin-top: 200px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .form-wrapper {
+    width: 90%;
+  }
+}
+
+.bg-white {
+  width: 100%;
+  background-color: #fff;
+  border: 2px solid #e5e7ec;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 1em;
+  text-align: center;
+}
+
+.bg-grey {
+  width: 100%;
+  background-color: #f8fafc;
+  border: 2px solid #e5e7ec;
+  border-top: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 1em;
+  text-align: center;
+}
+
+.text-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.field-group {
+  border: 0;
+  padding: 0.35em 0 0.625em 0;
+  text-align: left;
+  position: relative;
+}
+
+.label {
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.input {
+  padding: .5em 0 .5em 1em;
+  width: 100%;
+  border: 1px solid #e5e7ec;
+  border-radius: 5px;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+.btn-submit {
+  background-color: #6371C5;
+  color: #fff;
+  padding: .7em;
+  border-radius: 5px;
+  outline: 0;
+  border: 0;
+  width: 100%;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.link-forgot {
+  position: absolute;
+  right: 10px;
+  margin-top: 1em;
+  font-size: .8rem;
+  text-decoration: none;
+  color: #6371C5;
+  z-index: 2;
+}
+
+.link-register {
+  background-color: #fff;
+  display: flex;
+  padding: .7em;
+  justify-content: center;
+  text-decoration: none;
+  color: #4D5068;
+  border: 1px solid #e5e7ec;
+  border-radius: 5px;
+  margin-bottom: 1em;
+}
+
+.link-about>a {
+  color: #4D5068;
+  text-decoration: underline;
+}

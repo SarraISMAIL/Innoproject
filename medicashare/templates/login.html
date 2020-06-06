@@ -1,85 +1,84 @@
 <!DOCTYPE html>
-{% load static %}
-<html lang="en" class="no-js">
-    <head>
-        <meta charset="UTF-8" />
-        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
-        <title>Login </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <meta name="description" content="Login and Registration Form with HTML5 and CSS3" />
-        <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
-        <meta name="author" content="Codrops" />
-        <link rel="stylesheet" type="text/css" href="{% static 'loginSt/css/demo.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static 'loginSt/css/style1.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static 'loginSt/css/animate-custom.css' %}" />
-        
-        <style>
-            .alert-success {
-                color: #155724;
-                background-color: #d4edda;
-                border-color: #c3e6cb;
-            }
-            .alert-warning {
-                color: #b94a48;
-                background-color: #f2dede;
-                border-color: #ffeeba;
-            }
-            .alert {
-                position: relative;
-                padding: .75rem 1.25rem;
-                margin-bottom: 1rem;
-                border: 1px solid transparent;
-                border-radius: .25rem;
-            }
-        </style>
-    </head>
-    <body>
-        
-        <div class="container">
-            <header>
-				<nav class="codrops-demos">
-					<span> </span>
-				</nav>
-            </header>
-            <section>				
-                <div id="container_demo" >
-                    <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
-                    <a class="hiddenanchor" id="toregister"></a>
-                    <a class="hiddenanchor" id="tologin"></a>
-                    <div id="wrapper">
-                        <div id="login" class="animate form">
-                            <form method="POST"> 
-                                {% csrf_token %}
-                                <h1>Log in</h1>
-                                {% if messages %}
-                                {% for message in messages %}
-                                <div class="alert alert-{{message.tags}}"> {{message}} </div>
-                                {% endfor %}
-                                {% endif %}
-                                
-                                <p> 
-                                    <label for="username" class="uname" data-icon="u" > Your email or username </label>
-                                    <input id="username" name="username" required="required" type="text" placeholder="myusername or mymail@mail.com"/>
-                                </p>
-                                <p> 
-                                    <label for="password" class="youpasswd" data-icon="p"> Your password </label>
-                                    <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
-                                </p>
-                                
-                                <p class="login button">
-                                    <span id="msgerror" style="float: left;margin-left:1px;color:darkred;"> {{msg}} </span>
-                                    <input type="submit" value="Login" /> 
-								</p>
-                                <p class="change_link">
-									Not a member yet ?
-									<a href="{% url 'user:register' %}" class="to_register">Join us</a>
-								</p>
-                            </form>
-                        </div>
-						
-                    </div>
-                </div>  
-            </section>
-        </div>
-    </body>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="robots" content="follow,index">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CSS Login Page, Designed by Meg</title>
+	<meta name="description" content="🔐 An Open Source Template for Login Page From Scratch Without Any CSS Framework">
+	<meta name="keywords" content="login page css, login template, login css, login form template">
+
+	<link rel="icon" type="image/png" sizes="32x32"
+		href="https://mazipan.github.io/login-page-css/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96"
+		href="https://mazipan.github.io/login-page-css/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16"
+		href="https://mazipan.github.io/login-page-css/favicon/favicon-16x16.png">
+
+	<link rel="manifest" href="https://mazipan.github.io/login-page-css/manifest.json">
+
+	<meta name="msapplication-TileColor" content="#6371C5">
+	<meta name="msapplication-TileImage" content="https://mazipan.github.io/login-page-css/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#6371C5">
+
+	<link rel="stylesheet" href="../shared/normalize.css">
+	<link rel="stylesheet" href="../shared/additional.css">
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+	<!-- You don't need this script, this is my GA code -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-25065548-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-25065548-2');
+	</script>
+
+
+</head>
+
+<body img="sarra.jpg">
+	<div class="content-body">
+		<div class="form-wrapper">
+			<form class="bg-white">
+				<h1 class="text-title">Login Now</h1>
+				<!--<div class="field-group">
+					<label class="label" for="txt-store">Store adress</label>
+					<input class="input" type="text" id="txt-store" name="store" placeholder="yourstore.myshopify.com" />
+				</div>
+				-->
+				<div class="field-group">
+					<label class="label" for="txt-email">Email address</label>
+					<input class="input" type="text" id="txt-email" name="email" placeholder="aaaaaa@gmail.com" />
+				</div>
+				<div class="field-group">
+					<label class="label" for="txt-password">Password</label>
+					<input class="input" type="password" id="txt-password" name="password" placeholder="Enter password" />
+					<a href="#forgot" class="link-forgot">Forgot?</a>
+				</div>
+
+				<div class="field-group">
+					<input class="btn-submit" type="submit" value="Log In" />
+				</div>
+			</form>
+
+			<div class="bg-grey">
+				<a href="#register" class="link-register">Sign Up</a>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- ADDITIONAL CODE -- start YOU MIGHT NOT NEEDED -->
+	<footer>
+		<a href="/login-page-css/">
+			Back to Home
+		</a>
+
+</body>
+
 </html>
